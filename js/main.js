@@ -1,6 +1,6 @@
 initStatus();
 var i = 1;
-setInterval(() => {
+var timer=setInterval(() => {
     leave(getImgNode(i)).one('transitionend', (e) => {
         waiting($(e.currentTarget));
     });
@@ -8,6 +8,22 @@ setInterval(() => {
     enter(getImgNode(i + 1));
     i += 1;
 }, 3000);
+$(document).on('visibilitychange',function(){
+    if(document.hidden){
+        window.clearInterval(timer);
+    }else{
+        timer=setInterval(() => {
+            leave(getImgNode(i)).one('transitionend', (e) => {
+                waiting($(e.currentTarget));
+            });
+            if (i === 4) { i = 0; }
+            enter(getImgNode(i + 1));
+            i += 1;
+        }, 3000);
+    }
+});
+
+
 function initStatus() {
     $('.images>img:nth-child(1)').addClass('enter')
         .siblings().addClass('waiting');
