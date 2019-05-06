@@ -1,17 +1,26 @@
-window.$=jQuery;
-$('.images>img:nth-child(1)').addClass('enter');
-$('.images>img:nth-child(2)').addClass('waiting');
-$('.images>img:nth-child(3)').addClass('waiting');
-$('.images>img:nth-child(4)').addClass('waiting');
-var i=1;
-setInterval(()=>{
-    $(`.images>img:nth-child(${i})`).addClass('leave').removeClass('enter')
-    .on('transitionend',(e)=>{
-        $(e.currentTarget).addClass('waiting').removeClass('leave');
+initStatus();
+var i = 1;
+setInterval(() => {
+    leave(getImgNode(i)).one('transitionend', (e) => {
+        waiting($(e.currentTarget));
     });
-    if(i===4){
-        i=0;
-    }
-    $(`.images>img:nth-child(${i+1})`).addClass('enter').removeClass('waiting');
-    i+=1;   
-},3000);
+    if (i === 4) { i = 0; }
+    enter(getImgNode(i + 1));
+    i += 1;
+}, 3000);
+function initStatus() {
+    $('.images>img:nth-child(1)').addClass('enter')
+        .siblings().addClass('waiting');
+}
+function getImgNode(index) {
+    return $(`.images>img:nth-child(${index})`);
+}
+function leave($node) {
+    return $node.addClass('leave').removeClass('enter')
+}
+function waiting($node) {
+    return $node.addClass('waiting').removeClass('leave');
+}
+function enter($node) {
+    return $node.addClass('enter').removeClass('waiting');
+}
