@@ -5,27 +5,21 @@
 .window {
     width: 400px;
     height: 300px;
-    margin: 50px auto;
+    margin: 25px auto;
     overflow: hidden;
 }
 .images{
-    position: relative;
     display: flex;
-}
-.images>img{
-    width: 100%;
+    transform: translateX(-400px);
     transition: all 0.5s;
-    position: absolute;
-    top: 0;
-    left: 0;
 }
-.images>img.waiting{
-    transform: translateX(100%);
+.btnWrapper{
+    text-align: center;
 }
-.images>img.enter{
-    z-index: 2;  
-    transform: translateX(0);
+.btnList{
+    display:inline-block;
 }
-.images>img.leave{
-    transform: translateX(-100%);
+.btnList>button{
+    padding: 5px;
+    margin:0 5px;
 }
