@@ -2,12 +2,19 @@ let $images = $('.images');
 let $imgs = $('.images').children('img');
 let current = 1;
 init();
-let timer =loopStart();
-    $(loopPlay).on('mouseenter', function () {
+let timer = loopStart();
+$(document).on('visibilitychange', function () {
+    if (document.hidden) {
         loopStop(timer);
-    }).on('mouseleave', function () {
+    }else{
         timer = loopStart();
-    });
+    }
+});
+$(loopPlay).on('mouseenter', function () {
+    loopStop(timer);
+}).on('mouseleave', function () {
+    timer = loopStart();
+});
 $(btnList).on('click', 'button', function (e) {
     let id = $(e.currentTarget).attr('id');
     let index;
@@ -52,7 +59,7 @@ function loopStart() {//循环播放开始
         nextPicture(index);
     }, 2000);
 }
-function loopStop(timer){//循环播放结束
+function loopStop(timer) {//循环播放结束
     window.clearInterval(timer);
 }
 function Modified_value(index) {//让index的值永远是1、2、3、4
