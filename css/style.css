@@ -1,25 +1,8 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-.window {
-    width: 400px;
-    height: 300px;
-    margin: 25px auto;
-    overflow: hidden;
-}
-.images{
-    display: flex;
-    transform: translateX(-400px);
-    transition: all 0.5s;
-}
-.btnWrapper{
-    text-align: center;
-}
-.btnList{
-    display:inline-block;
-}
-.btnList>button{
-    padding: 5px;
-    margin:0 5px;
-}
+* {margin: 0;padding: 0;}
+body{text-align: center;}
+.loopPlay{display: inline-block;}
+.window {width: 400px;height: 300px;margin: 25px auto;overflow: hidden;}
+.images{display: flex;transform: translateX(-400px);transition: all 0.5s;}
+.btnWrapper{text-align: center;}
+.btnList{display:inline-block;}
+.btnList>button{padding: 5px;margin:0 5px;}

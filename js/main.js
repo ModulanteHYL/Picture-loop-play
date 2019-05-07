@@ -6,8 +6,6 @@ let timer = loopStart();
 $(document).on('visibilitychange', function () {
     if (document.hidden) {
         loopStop(timer);
-    }else{
-        timer = loopStart();
     }
 });
 $(loopPlay).on('mouseenter', function () {
